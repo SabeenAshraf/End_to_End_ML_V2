@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Website Title -->
+  <div class="container">
+    <h2 class='container-heading'><span class="heading_font">Smith Disease Predictor</span></h2>
+    <div class='description'>
+      <p>A Machine Learning Web Application that predicits chances of having Smith Disease or not, Built with Flask.</p><br>
+        <p>(Note:This model is ......% accurate)</p>
+    </div>
+  </div>
+  <!-- Text Area -->
+  <div class="ml-container">
+    <form action="{{ url_for('predict')}}" method="POST"> 
+      
+        <label for="Height">Height(cm)</label>
+        <input type="number" id="Height" name="Height" placeholder="Your height.." min="0" max="300"><br>
+        <label for="Weight">Weight(kg)</label>
+        <input type="number" id="Weight" name="Weight" placeholder="Your weight.." min="0" max="500"><br>
+        <label for="High-Cholesterol">High Cholesterol Level:</label>
+        <input type="number" id="High_Cholesterol" name="High_Cholesterol" placeholder="Enter your cholesterol level" min="0" max="500"><br>
+        <label for="Blood_Pressure">Resting Blood Pressure(mmHg):</label>
+        <input type="number" id="Blood_Pressure" name="Blood_Pressure" placeholder="Enter your blood pressure" min="0" max="500"><br>
+        <label for="Mental_Health">How many days did poor physical or mental health keep you from doing your usual activities?</label>
+        <select id="Mental_Health" name="Mental_Health">
+          <option value="0">0 days</option>
+          <option value="1">1 day</option>
+          <option value="2">2 days</option>
+          <option value="3">3 days</option>
+          <option value="4">4 days</option>
+          <option value="5">5 days</option>
+          <option value="6">6 days</option>
+          <option value="7">7 days</option>
+          <option value="8">8 days</option>
+          <option value="9">9 days</option>
+          <option value="10">10 days</option>
+          <option value="11">11 days</option>
+          <option value="12">12 days</option>
+          <option value="13">13 days</option>
+          <option value="14">14 days</option>
+          <option value="15">15 days</option>
+          <option value="16">16 days</option>
+          <option value="17">17 days</option>
+          <option value="18">18 days</option>
+          <option value="19">19 days</option>
+          <option value="20">20 days</option>
+          <option value="21">21 days</option>
+          <option value="22">22 days</option>
+          <option value="23">23 days</option>
+          <option value="24">24 days</option>
+          <option value="25">25 days</option>
+          <option value="26">26 days</option>
+          <option value="27">27 days</option>
+          <option value="28">28 days</option>
+          <option value="29">29 days</option>
+          <option value="30">30 days</option>
+        </select><br>
+        
+        <label for="Physical_Health">How many days during the past 30 days was your physical health not good to the point where it was difficult to walk?</label>
+        <select id="Physical_Health" name="Physical_Health">
+          <option value="0">0 days</option>
+          <option value="1">1 day</option>
+          <option value="2">2 days</option>
+          <option value="3">3 days</option>
+          <option value="4">4 days</option>
+          <option value="5">5 days</option>
+          <option value="6">6 days</option>
+          <option value="7">7 days</option>
+          <option value="8">8 days</option>
+          <option value="9">9 days</option>
+          <option value="10">10 days</option>
+          <option value="11">11 days</option>
+          <option value="12">12 days</option>
+          <option value="13">13 days</option>
+          <option value="14">14 days</option>
+          <option value="15">15 days</option>
+          <option value="16">16 days</option>
+          <option value="17">17 days</option>
+          <option value="18">18 days</option>
+          <option value="19">19 days</option>
+          <option value="20">20 days</option>
+          <option value="21">21 days</option>
+          <option value="22">22 days</option>
+          <option value="23">23 days</option>
+          <option value="24">24 days</option>
+          <option value="25">25 days</option>
+          <option value="26">26 days</option>
+          <option value="27">27 days</option>
+          <option value="28">28 days</option>
+          <option value="29">29 days</option>
+          <option value="30">30 days</option>
+        </select><br>
+
+
+
+
+        <div style="display: flex; align-items: center;">
+          <label for="Smoking_Habit" style="margin-left: 10px;">Do you smoke?</label>
+          <input type="radio" id="smoking-habit-yes" name="Smoking_Habit" value="1">
+          <label for="smoking-habit-yes">Yes</label>
+          <input type="radio" id="smoking-habit-no" name="Smoking_Habit" value="0" checked>
+          <label for="smoking-habit-no">No</label>
+        </div>
+               
+        <br><!--  a line break -->
+        <div style="display: flex; align-items: center;">
+          <label for="Exercise" style="margin-left: 10px;">Do you exercise regularly?</label>
+          <input type="checkbox" id="Exercise" name="Exercise" value="1">
+          <label for="Exercise">Yes</label>
+          <input type="checkbox" id="no-Exercise" name="Exercise" value="0">
+          <label for="no-Exercise">No</label>
+        </div>
+        
+        
+        <br><!--  a line break -->
+        
+        <div style="display: flex; align-items: center;">
+          <label for="sex" style="margin-left: 10px;">Gender</label>
+          <input type="radio" id="sex-female" name="sex" value="1">
+          <label for="sex-female">Female</label>
+          <input type="radio" id="sex-male" name="sex" value="0">
+          <label for="sex-male">Male</label>
+        </div>
+        
+        
+        <br><!--  a line break -->
+      
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="1" max="120"><br>
+        
+
+        <label for="Drinking_Habit_ord">Drinking Habit:</label>
+        <select id="Drinking_Habit_ord" name="Drinking_Habit_ord">
+          <option value="0">I do not consume any type of alcohol</option>
+          <option value="1">I consider myself a social drinker</option>
+          <option value="2">I usually consume alcohol every day</option>
+        </select><br>
+
+
+        <label for="Water_Habit_ord">Water Habit:</label>
+        <select id="Water_Habit_ord" name="Water_Habit_ord">
+          <option value="2">Less than half a liter</option>
+          <option value="1">More than half a liter but less than one liter</option>
+          <option value="0">Between one liter and two liters</option>
+        </select><br>
+        
+        <label for="Fruit_Habit_ord">How many pieces of fruit do you consume on average?</label><br>
+        <select id="Fruit_Habit_ord" name="Fruit_Habit_ord">
+          <option value="2">Less than 1. I do not consume fruits every day</option>
+          <option value="1">1 to 2 pieces of fruit in average</option>
+          <option value="0">3 to 4 pieces of fruit in average</option>
+        </select><br>
+        
+        
+
+        <label for="Diabetes_ord">Do you have diabetes?</label><br>
+        <select id="Diabetes_ord" name="Diabetes_ord">
+          <option value="0">Neither I nor my immediate family have diabetes.</option>
+          <option value="2">I have/had pregnancy diabetes or borderline diabetes.</option>
+          <option value="1">I do have diabetes.</option>
+          <option value="3">I don't have diabetes, but I have direct family members who have diabetes.</option>
+        </select><br><br>
+
+        <label for="Checkup_ord">When was your last medical checkup?</label><br>
+        <select id="Checkup_ord" name="Checkup_ord">
+          <option value="0">Less than three months ago</option>
+          <option value="1">Less than three months but more than one year ago</option>
+          <option value="2">More than three years ago</option>
+          <option value="3">Not sure</option>
+        </select>
+        
+        
+        
+
+                      
+      
+      <input type="submit" class="my-cta-button" value="Predict">
+    </form>
+  </div>
+  <!-- Footer -->
+  <div class='footer'>
+    <div class="contact">
+      <a target="_blank" href=""><i
+          class="fab fa-github fa-lg contact-icon"></i></a>
+      <a target="_blank" href="http://www.linkedin.com/in/sabeen-ashraf"><i
+          class="fab fa-linkedin fa-lg contact-icon"></i></a>
+    </div>
+    <p class='footer-description'>Made by Sabeen Mubashar.</p>
+  </div>
+</body>
+</html>
